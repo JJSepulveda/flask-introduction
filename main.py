@@ -1,6 +1,7 @@
 from flask import Flask, request, make_response, redirect
 from flask import render_template
 
+
 app = Flask(__name__)
 
 COOKIE_USER_IP = 'user_ip'
@@ -18,6 +19,7 @@ def index():
 def hello():
 	user_ip = request.cookies.get(COOKIE_USER_IP)
 	return render_template('hello.html', user_ip=user_ip)
+
 
 
 if __name__ == "__main__":
