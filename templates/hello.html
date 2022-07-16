@@ -1,9 +1,21 @@
-{% if user_ip %}
-	<h1>Hello world Platzi, tu IP es {{ user_ip }}</h1>
-{% else %}
-	<a href="{{ url_for('index') }}">Ir a inicio para obtener tu ip</a>
-{% endif %}
+{% extends "base.html" %}
+{% import 'macro_render_todo.html' as macro_todo %}
 
-{% for todo in todos %}
-	<li>{{ todo }}</li>
-{% endfor %}
+{% block title %}
+	{{ super() }}
+	Bienvenida al blog
+{% endblock title %}
+
+{% block content %}
+	{% if user_ip %}
+		<h1>Hello world Platzi, tu IP es {{ user_ip }}</h1>
+	{% else %}
+		<a href="{{ url_for('index') }}">Ir a inicio para obtener tu ip</a>
+	{% endif %}
+
+	<ul>
+		{% for todo in todos %}
+			{{ macro_todo.render_todo(todo) }}
+		{% endfor %}
+	</ul>
+{% endblock content %}

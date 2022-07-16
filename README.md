@@ -84,7 +84,7 @@ def hello():
 	return render_template('hello.html', user_ip=user_ip)
 ```
 
-## Estructura de control - for
+### Estructura de control - for
 Estrucutra de control "for" en Jinga2
 
 Ejemplo:
@@ -95,4 +95,28 @@ Ejemplo:
 			<td>{{ segment }}td>
 	<tr>
 {% endfor %}`
+```
+
+### Macros
+Definición de la macro:
+```
+# templates/macro_render_todo.html
+{% macro render_todo(todo) %}
+	<li>Tarea: {{ todo }}</li>
+{% endmacro %}
+```
+Implementación de la macro:
+```
+# templates/hello.html
+...
+{% import 'macro_render_todo.html' as macro_todo %}
+...
+{% block content %}
+	...
+	<ul>
+		{% for todo in todos %}
+			{{ macro_todo.render_todo(todo) }}
+		{% endfor %}
+	</ul>
+{% endblock content %}
 ```
