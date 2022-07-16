@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 COOKIE_USER_IP = 'user_ip'
 
+todos = ['TODO1', 'TODO2', 'TODO3']
+
 @app.route('/')
 def index():
 	user_ip = request.remote_addr
@@ -18,7 +20,11 @@ def index():
 @app.route('/hello')
 def hello():
 	user_ip = request.cookies.get(COOKIE_USER_IP)
-	return render_template('hello.html', user_ip=user_ip)
+	context = {
+		'user_ip': user_ip,
+		'todos': todos
+	}
+	return render_template('hello.html', **context)
 
 
 

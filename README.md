@@ -55,7 +55,9 @@ def hello():
 	return f'Hola tu ip es: {user_ip}'
 ```
 
-## Jinja2 - estructuras de control - if
+## Jinga2
+
+### Estructura de control - if
  Es un templete-engine inspirado en los Django-templates.
  Las estrucutras de control son las condicionales.
 
@@ -80,4 +82,17 @@ COOKIE_USER_IP = 'user_ip'
 def hello():
 	user_ip = request.cookies.get(COOKIE_USER_IP)
 	return render_template('hello.html', user_ip=user_ip)
+```
+
+## Estructura de control - for
+Estrucutra de control "for" en Jinga2
+
+Ejemplo:
+```
+{% for key, segment in segment_details.items() %}
+	<tr>
+			<td>{{ key }}td>
+			<td>{{ segment }}td>
+	<tr>
+{% endfor %}`
 ```

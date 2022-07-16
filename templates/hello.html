@@ -3,3 +3,7 @@
 {% else %}
 	<a href="{{ url_for('index') }}">Ir a inicio para obtener tu ip</a>
 {% endif %}
+
+{% for todo in todos %}
+	<li>{{ todo }}</li>
+{% endfor %}
