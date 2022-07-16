@@ -6,7 +6,12 @@ app = Flask(__name__)
 
 COOKIE_USER_IP = 'user_ip'
 
-todos = ['TODO1', 'TODO2', 'TODO3']
+todos = [
+	'Terminar el curso de flask', 
+	'Continuar la ruta de javascript', 
+	'Crear el portafolio de desarrollador web',
+	'Comenzar el reto de observabilidad'
+]
 
 @app.route('/')
 def index():
@@ -22,8 +27,9 @@ def hello():
 	user_ip = request.cookies.get(COOKIE_USER_IP)
 	context = {
 		'user_ip': user_ip,
-		'todos': todos
+		'todos': todos,
 	}
+
 	return render_template('hello.html', **context)
 
 
