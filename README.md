@@ -120,3 +120,52 @@ Implementación de la macro:
 	</ul>
 {% endblock content %}
 ```
+
+### Include 
+Puedes incluir pedazos de codigo html con la etiquete include
+
+```html
+#templates/navbar.html
+<nav>
+	<ul>
+		<li>
+			<a href="{{ url_for('index') }}">
+				Inicio
+			</a>
+		</li>
+		<li>
+			<a href="{{ url_for('hello') }}" target="_blank">
+				hello
+			</a>
+		</li>
+	</ul>
+</nav>
+```
+
+```
+# templates/base.html
+...
+<header>
+	{% include 'navbar.html' %}
+</header>
+...
+```
+### Archivos estaticos
+Para manejar los archivos estáticos hay que crear una carpeta en la raíz con el nombre de static y dentro guardar todos los archivos estáticos.
+
+Nota: los archivos estáticos se guardan en el cache del navegador, por lo que puede que abecés se tenga que hacer un hard-reload para visualizarlos.
+
+Ejemplo de como insertar una imagen en la pagina desde un archivo estático:
+
+```
+# templates/navbar.html
+<img 
+			src="{{ url_for('static', filename='images/red-amongus.png') }}" 
+			alt="logo" 
+/>
+```
+
+Ejemplo de como importar un css.
+```
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+```
